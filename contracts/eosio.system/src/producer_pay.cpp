@@ -105,8 +105,8 @@ namespace eosiosystem {
 
          //auto to_producers     = new_tokens / 5;
          auto to_producers     = new_tokens * 6 / 10;
-         auto to_savings1      = (new_tokens - to_producers)/2;
-         auto to_savings2      = (new_tokens - to_producers)/2;
+         auto to_savings       = (new_tokens - to_producers)/2;
+         auto to_fund          = (new_tokens - to_producers)/2;
          auto to_per_block_pay = to_producers / 2;
          auto to_per_vote_pay  = to_producers - to_per_block_pay;
 
@@ -117,12 +117,12 @@ namespace eosiosystem {
 
          INLINE_ACTION_SENDER(eosio::token, transfer)(
             token_account, { {_self, active_permission} },
-            { _self, saving_account1, asset(to_savings1, core_symbol()), "unallocated inflation" }
+            { _self, saving_account, asset(to_savings, core_symbol()), "unallocated inflation" }
          );
 
          INLINE_ACTION_SENDER(eosio::token, transfer)(
             token_account, { {_self, active_permission} },
-            { _self, saving_account2, asset(to_savings2, core_symbol()), "unallocated inflation" }
+            { _self, fund_account, asset(to_fund, core_symbol()), "unallocated inflation" }
          );
 
          INLINE_ACTION_SENDER(eosio::token, transfer)(

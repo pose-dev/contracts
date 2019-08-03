@@ -326,8 +326,8 @@ namespace eosiosystem {
          static constexpr eosio::name bpay_account{"eosio.bpay"_n};
          static constexpr eosio::name vpay_account{"eosio.vpay"_n};
          static constexpr eosio::name names_account{"eosio.names"_n};
-         static constexpr eosio::name saving_account1{"eosio.saving1"_n};
-         static constexpr eosio::name saving_account2{"eosio.saving2"_n};
+         static constexpr eosio::name saving_account{"eosio.saving"_n};
+         static constexpr eosio::name fund_account{"eosio.fund"_n};
          static constexpr eosio::name rex_account{"eosio.rex"_n};
          static constexpr eosio::name null_account{"eosio.null"_n};
          static constexpr symbol ramcore_symbol = symbol(symbol_code("RAMCORE"), 4);
