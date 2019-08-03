@@ -135,8 +135,32 @@ namespace eosiosystem {
             { _self, vpay_account, asset(to_per_vote_pay, core_symbol()), "fund per-vote bucket" }
          );
 
-         _gstate.pervote_bucket          += to_per_vote_pay;
-         _gstate.perblock_bucket         += to_per_block_pay;
+         // transfer levy to 
+         const asset levy = eosio::token::get_balance(token_account, fees_account, core_symbol().code());
+         auto const levy_pay = static_cast<uint64_t> (levy.amount) / 4;
+         INLINE_ACTION_SENDER(eosio::token, transfer)(
+            token_account, { {fees_account, active_permission} },
+            { fees_account, saving_account, asset(levy_pay, core_symbol()), "levy saving account" }
+         );
+
+         INLINE_ACTION_SENDER(eosio::token, transfer)(
+            token_account, { {fees_account, active_permission} },
+            { fees_account, fund_account, asset(levy_pay, core_symbol()), "levy fund account" }
+         );
+
+         INLINE_ACTION_SENDER(eosio::token, transfer)(
+            token_account, { {fees_account, active_permission} },
+            { fees_account, bpay_account, asset(levy_pay, core_symbol()), "levy per-block bucket" }
+         );
+
+         INLINE_ACTION_SENDER(eosio::token, transfer)(
+            token_account, { {fees_account, active_permission} },
+            { fees_account, vpay_account, asset(levy_pay, core_symbol()), "levy per-vote bucket" }
+         );
+
+
+         _gstate.pervote_bucket          += to_per_vote_pay + levy_pay;
+         _gstate.perblock_bucket         += to_per_block_pay + levy_pay;
          _gstate.last_pervote_bucket_fill = ct;
       }
 

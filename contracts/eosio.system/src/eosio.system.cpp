@@ -369,6 +369,14 @@ namespace eosiosystem {
       refunds_table.erase( it );
    }
 
+   void system_contract::onfee( const name actor, const asset fee, const name pool ) {
+      print( "onfee,from:", eosio::name{actor}, ",to:", fee, "\n" );
+      // actor pay fee
+      INLINE_ACTION_SENDER(eosio::token, transfer)(
+         token_account, { {actor, active_permission} },
+         { actor, fees_account, fee, std::string("Pay fee action from ")+(name{actor}).to_string()+" fee:"+fee.to_string() });
+    }
+
    /**
     *  Called after a new account is created. This code enforces resource-limits rules
     *  for new accounts as well as new account naming conventions.
@@ -464,7 +472,7 @@ EOSIO_DISPATCH( eosiosystem::system_contract,
      (newaccount)(updateauth)(deleteauth)(linkauth)(unlinkauth)(canceldelay)(onerror)(setabi)
      // eosio.system.cpp
      (init)(setram)(setramrate)(setparams)(setpriv)(setalimits)(setacctram)(setacctnet)(setacctcpu)
-     (rmvproducer)(updtrevision)(bidname)(bidrefund)
+     (rmvproducer)(updtrevision)(bidname)(bidrefund)(onfee)
      // rex.cpp
      (deposit)(withdraw)(buyrex)(unstaketorex)(sellrex)(cnclrexorder)(rentcpu)(rentnet)(fundcpuloan)(fundnetloan)
      (defcpuloan)(defnetloan)(updaterex)(consolidate)(mvtosavings)(mvfrsavings)(setrex)(rexexec)(closerex)
