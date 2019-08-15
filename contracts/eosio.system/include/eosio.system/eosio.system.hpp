@@ -319,18 +319,18 @@ namespace eosiosystem {
 
       public:
          static constexpr eosio::name active_permission{"active"_n};
-         static constexpr eosio::name token_account{"eosio.token"_n};
-         static constexpr eosio::name ram_account{"eosio.ram"_n};
-         static constexpr eosio::name ramfee_account{"eosio.ramfee"_n};
-         static constexpr eosio::name stake_account{"eosio.stake"_n};
-         static constexpr eosio::name bpay_account{"eosio.bpay"_n};
-         static constexpr eosio::name vpay_account{"eosio.vpay"_n};
-         static constexpr eosio::name names_account{"eosio.names"_n};
-         static constexpr eosio::name saving_account{"eosio.saving"_n};
-         static constexpr eosio::name fund_account{"eosio.fund"_n};
-         static constexpr eosio::name rex_account{"eosio.rex"_n};
-         static constexpr eosio::name fees_account{"eosio.fees"_n};
-         static constexpr eosio::name null_account{"eosio.null"_n};
+         static constexpr eosio::name token_account{"pose.token"_n};
+         static constexpr eosio::name ram_account{"pose.ram"_n};
+         static constexpr eosio::name ramfee_account{"pose.ramfee"_n};
+         static constexpr eosio::name stake_account{"pose.stake"_n};
+         static constexpr eosio::name bpay_account{"pose.bpay"_n};
+         static constexpr eosio::name vpay_account{"pose.vpay"_n};
+         static constexpr eosio::name names_account{"pose.names"_n};
+         static constexpr eosio::name saving_account{"pose.saving"_n};
+         static constexpr eosio::name fund_account{"pose.fund"_n};
+         static constexpr eosio::name rex_account{"pose.rex"_n};
+         static constexpr eosio::name fees_account{"pose.fees"_n};
+         static constexpr eosio::name null_account{"pose.null"_n};
          static constexpr symbol ramcore_symbol = symbol(symbol_code("RAMCORE"), 4);
          static constexpr symbol ram_symbol     = symbol(symbol_code("RAM"), 0);
          static constexpr symbol rex_symbol     = symbol(symbol_code("REX"), 4);
