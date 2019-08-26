@@ -240,4 +240,13 @@ namespace eosiosystem {
       }
    }
 
+   void system_contract::clearrewards() {
+      require_auth( _self );
+      // clear talbes vote/prod rewards related
+      _gstate.pervote_bucket      = 0;
+      _gstate.perblock_bucket     = 0;
+      _gstate.total_unpaid_blocks = 0;
+      _gstate.last_pervote_bucket_fill = current_time_point();
+   }
+
 } //namespace eosiosystem
