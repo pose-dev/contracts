@@ -242,11 +242,18 @@ namespace eosiosystem {
 
    void system_contract::clearrewards() {
       require_auth( _self );
-      // clear talbes vote/prod rewards related
+
+      auto ct = current_time_point();
       _gstate.pervote_bucket      = 0;
       _gstate.perblock_bucket     = 0;
       _gstate.total_unpaid_blocks = 0;
-      _gstate.last_pervote_bucket_fill = current_time_point();
+      _gstate.last_pervote_bucket_fill = time_point();
+
+      //const auto& prod = _producers.get( tgt.value );
+      //_producers.modify( prod, same_payer, [&](auto& p) {
+      //   p.last_claim_time = ct;
+      //   p.unpaid_blocks   = 0;
+      //});
    }
 
 } //namespace eosiosystem
