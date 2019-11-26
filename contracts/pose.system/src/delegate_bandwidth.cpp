@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE.txt
+ *  @copyright defined in pose/LICENSE.txt
  */
 #include <eosio.system/eosio.system.hpp>
 
@@ -324,7 +324,7 @@ namespace eosiosystem {
       } // tot_itr can be invalid, should go out of scope
 
       // create refund or update from existing refund
-      if ( stake_account != source_stake_from ) { //for eosio both transfer and refund make no sense
+      if ( stake_account != source_stake_from ) { //for pose both transfer and refund make no sense
          refunds_table refunds_tbl( _self, from.value );
          auto req = refunds_tbl.find( from.value );
 

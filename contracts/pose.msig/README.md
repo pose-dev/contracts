@@ -45,16 +45,16 @@ Execute a proposal
 Cleos usage example.
 
 Prerequisites:
-   - eosio.token contract installed to eosio.token accountm, eosio.msig contract installed on eosio.msig account which is a priviliged account.
-   - account 'treasury' is the issuer of EOS token.
+   - pose.token contract installed to pose.token accountm, pose.msig contract installed on pose.msig account which is a priviliged account.
+   - account 'treasury' is the issuer of POSE token.
    - account 'tester' exists.
    - keys to accounts 'treasury' and 'tester' imported into local wallet, the wallet is unlocked.
 
 One user creates a proposal:
 ````
-$ cleos multisig propose test '[{"actor": "treasury", "permission": "active"}]' '[{"actor": "treasury", "permission": "active"}]' eosio.token issue '{"to": "tester", "quantity": "1000.0000 EOS", "memo": ""}' -p tester
+$ cleos multisig propose test '[{"actor": "treasury", "permission": "active"}]' '[{"actor": "treasury", "permission": "active"}]' pose.token issue '{"to": "tester", "quantity": "1000.0000 POSE", "memo": ""}' -p tester
 executed transaction: e26f3a3a7cba524a7b15a0b6c77c7daa73d3ba9bf84e83f9c2cdf27fcb183d61  336 bytes  107520 cycles
-#    eosio.msig <= eosio.msig::propose          {"proposer":"tester","proposal_name":"test","requested":[{"actor":"treasury","permission":"active"}]...
+#    pose.msig <= pose.msig::propose          {"proposer":"tester","proposal_name":"test","requested":[{"actor":"treasury","permission":"active"}]...
 ````
 
 Another user reviews the transaction:
@@ -88,7 +88,7 @@ $ cleos multisig review tester test -p treasury
         ],
         "data": {
           "to": "tester",
-          "quantity": "1000.0000 EOS",
+          "quantity": "1000.0000 POSE",
           "memo": ""
         },
         "hex_data": "000000005c95b1ca809698000000000004454f530000000000"

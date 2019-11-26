@@ -1,6 +1,6 @@
 /**
  *  @file
- *  @copyright defined in eos/LICENSE.txt
+ *  @copyright defined in pose/LICENSE.txt
  */
 #include <eosio.system/eosio.system.hpp>
 

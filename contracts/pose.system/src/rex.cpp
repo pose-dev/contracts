@@ -1,5 +1,5 @@
 /**
- *  @copyright defined in eos/LICENSE.txt
+ *  @copyright defined in pose/LICENSE.txt
  */
 
 #include <eosio.system/eosio.system.hpp>
@@ -331,7 +331,7 @@ namespace eosiosystem {
     */
    void system_contract::setrex( const asset& balance )
    {
-      require_auth( "eosio"_n );
+      require_auth( "pose"_n );
 
       check( balance.amount > 0, "balance must be set to have a positive amount" );
       check( balance.symbol == core_symbol(), "balance symbol must be core symbol" );
@@ -1063,7 +1063,7 @@ namespace eosiosystem {
    asset system_contract::add_to_rex_pool( const asset& payment )
    {
       /**
-       * If CORE_SYMBOL is (EOS,4), maximum supply is 10^10 tokens (10 billion tokens), i.e., maximum amount
+       * If CORE_SYMBOL is (POSE,4), maximum supply is 10^10 tokens (10 billion tokens), i.e., maximum amount
        * of indivisible units is 10^14. rex_ratio = 10^4 sets the upper bound on (REX,4) indivisible units to
        * 10^18 and that is within the maximum allowable amount field of asset type which is set to 2^62
        * (approximately 4.6 * 10^18). For a different CORE_SYMBOL, and in order for maximum (REX,4) amount not
